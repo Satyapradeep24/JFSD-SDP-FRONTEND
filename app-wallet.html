@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Add Money - Invest Mart</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon.png">
+    <link href="./css/style.css" rel="stylesheet">
+    <style>
+        .transaction-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .transaction-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .transaction-item.positive {
+            color: green;
+        }
+
+        .transaction-item.negative {
+            color: red;
+        }
+
+        .add-money {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .add-money input {
+            width: 200px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="preloader">
+        <div class="sk-three-bounce">
+            <div class="sk-child sk-bounce1"></div>
+            <div class="sk-child sk-bounce2"></div>
+            <div class="sk-child sk-bounce3"></div>
+        </div>
+    </div>
+    <div id="main-wrapper">
+        <div class="nav-header">
+            <a href="index.html" class="brand-logo">
+                <img class="logo-abbr" src="./images/logo.png" alt="">
+                <img class="logo-compact" src="./images/logo-text.png" alt="">
+                <img class="brand-title" src="./images/logo-text.png" alt="">
+            </a>
+            <div class="nav-control">
+                <div class="hamburger">
+                    <span class="line"></span><span class="line"></span><span class="line"></span>
+                </div>
+            </div>
+        </div>
+        <div class="header">
+            <div class="header-content">
+                <nav class="navbar navbar-expand">
+                    <div class="collapse navbar-collapse justify-content-between">
+                        <div class="header-left">
+                            <div class="search_bar dropdown">
+                                <span class="search_icon p-3 c-pointer" data-toggle="dropdown">
+                                    <i class="mdi mdi-magnify"></i>
+                                </span>
+                                <div class="dropdown-menu p-0 m-0">
+                                    <form>
+                                        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <ul class="navbar-nav header-right">
+                            <li class="nav-item dropdown header-profile">
+                                <a class="nav-link" href="#" role="button" data-toggle="dropdown">
+                                    <i class="mdi mdi-account"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a href="./app-profile.html" class="dropdown-item">
+                                        <i class="icon-user"></i>
+                                        <span class="ml-2">Profile </span>
+                                    </a>
+                                    <a href="./email-inbox.html" class="dropdown-item">
+                                        <i class="icon-envelope-open"></i>
+                                        <span class="ml-2">Inbox </span>
+                                    </a>
+                                    <a href="./page-login.html" class="dropdown-item">
+                                        <i class="icon-key"></i>
+                                        <span class="ml-2">Logout </span>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="quixnav">
+            <div class="quixnav-scroll">
+                <ul class="metismenu" id="menu">
+                    <li class="nav-label first">Main Menu</li>
+                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
+                                class="icon icon-single-04"></i><span class="nav-text">Dashboard</span></a>
+                        <ul aria-expanded="false">
+                            <li><a href="./dashboard.html">Dashboard 1</a></li>
+                            <li><a href="./index2.html">Dashboard 2</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="nav-label">Apps</li>
+                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
+                                class="icon icon-app-store"></i><span class="nav-text">Apps</span></a>
+                        <ul aria-expanded="false">
+                            <li><a href="./app-profile.html">Profile</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
+                                class="icon icon-chart-bar-33"></i><span class="nav-text">Fund Options</span></a>
+                        <ul aria-expanded="false">
+                            <li><a href="./app-funddisplay.html">Add Fund</a></li>
+                            <li><a href="./app-fundcalculator.html">Fund Calculator</a></li>
+                            <li><a href="./app-fundcomparer.html">Fund Comparer</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="content-body">
+            <div class="container-fluid">
+                <div class="row page-titles mx-0">
+                    <div class="col-sm-6">
+                        <div class="welcome-text">
+                            <h4>Add Money to Wallet</h4>
+                            <span class="ml-1">Manage your wallet transactions below.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="add-money">
+                            <input type="number" id="amount" placeholder="Enter Amount" required>
+                            <button class="btn btn-primary" onclick="addMoney()">Add Money</button>
+                        </div>
+                        <h4 class="mt-4">Transaction History</h4>
+                        <ul class="transaction-list">
+                            <li class="transaction-item positive">
+                                <span>Deposit: ₹500</span>
+                                <span>2024-10-05</span>
+                            </li>
+                            <li class="transaction-item negative">
+                                <span>Withdrawal: ₹200</span>
+                                <span>2024-10-06</span>
+                            </li>
+                            <li class="transaction-item positive">
+                                <span>Deposit: ₹1000</span>
+                                <span>2024-10-07</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+    <script src="./vendor/global/global.min.js"></script>
+    <script src="./js/quixnav-init.js"></script>
+    <script src="./js/custom.min.js"></script>
+
+    <script>
+        function addMoney() {
+            const amountInput = document.getElementById("amount");
+            const amount = amountInput.value;
+
+            if (amount && !isNaN(amount)) {
+                // Here, you would typically add logic to update the wallet and save the transaction.
+                alert(`Added ₹${amount} to your wallet!`);
+
+                // Add new transaction to the list (for demo purposes).
+                const transactionList = document.querySelector('.transaction-list');
+                const transactionItem = document.createElement('li');
+                transactionItem.className = 'transaction-item positive';
+                transactionItem.innerHTML = `<span>Deposit: ₹${amount}</span><span>${new Date().toISOString().split('T')[0]}</span>`;
+                transactionList.appendChild(transactionItem);
+
+                // Clear the input field
+                amountInput.value = '';
+            } else {
+                alert('Please enter a valid amount.');
+            }
+        }
+    </script>
+</body>
+</html>
